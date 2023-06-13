@@ -1,0 +1,15 @@
+- Cài đặt docker https://www.docker.com/products/docker-desktop/
+- Copy file docker-compose.yml
+- Bật CMD chạy docker compose up
+- Vào locahost 8080 
+- Tạo mysql postgresSQL theo file .yml
+  + My sql
+  + server:   mysql
+  + username: root
+  + pw: MYSQL_ROOT_PASSWORD: example
+
+  + postgres
+  + server:   postgres
+  + username: postgres
+  + pw:  POSTGRES_PASSWORD: example
+

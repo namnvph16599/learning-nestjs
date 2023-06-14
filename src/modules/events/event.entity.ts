@@ -1,4 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Event {
@@ -11,6 +16,9 @@ export class Event {
   @Column()
   address: string;
 
-  @Column()
-  schedule: Date;
+  //   @Column()
+  //   schedule: Date;
+
+  //   @CreateDateColumn({ name: 'created_at' })
+  //   createdAt: Date;
 }

@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EventsController } from './modules/events/events.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Event } from './modules/events/event.entity';
 
 @Module({
   imports: [
@@ -13,7 +14,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'root',
       password: 'example',
       database: 'nest-events',
+      entities: [Event],
+      // synchronize: true, //note
     }),
+    TypeOrmModule.forFeature([Event]),
   ],
   controllers: [AppController, EventsController],
   providers: [AppService],

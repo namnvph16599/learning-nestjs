@@ -3,12 +3,13 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
 export class Event {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   name: string;
@@ -16,9 +17,15 @@ export class Event {
   @Column()
   address: string;
 
-  //   @Column()
-  //   schedule: Date;
+  @Column()
+  date_event: Date;
 
-  //   @CreateDateColumn({ name: 'created_at' })
-  //   createdAt: Date;
+  @Column({ default: true })
+  isApprove: boolean;
+
+  @CreateDateColumn({ name: 'createdAt' })
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
 }

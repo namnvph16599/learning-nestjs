@@ -15,7 +15,8 @@ import { Event } from './modules/events/event.entity';
       password: 'example',
       database: 'nest-events',
       entities: [Event],
-      // synchronize: true, //note
+      autoLoadEntities: true,
+      synchronize: true,
     }),
     TypeOrmModule.forFeature([Event]),
   ],

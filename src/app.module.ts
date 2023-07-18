@@ -1,26 +1,21 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { EventsController } from './modules/events/events.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Event } from './modules/events/event.entity';
+import { ConfigModule } from '@nestjs/config';
+import typeorm from './config/typeorm';
+import { EventsModule } from './modules/event/event.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: '127.0.0.1',
-      port: 3306,
-      username: 'root',
-      password: 'example',
-      database: 'nest-events',
-      entities: [Event],
-      autoLoadEntities: true,
-      synchronize: true,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: ['.env'],
+      expandVariables: true,
     }),
-    TypeOrmModule.forFeature([Event]),
+    TypeOrmModule.forRootAsync({ useFactory: typeorm }),
+    EventsModule,
   ],
-  controllers: [AppController, EventsController],
-  providers: [AppService],
+  controllers: [AppController],
+  providers: [],
 })
 export class AppModule {}

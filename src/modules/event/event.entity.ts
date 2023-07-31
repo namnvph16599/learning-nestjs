@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Attendee } from './attendee.entity';
 
 @Entity()
 export class Event {
@@ -28,4 +30,7 @@ export class Event {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToMany(() => Attendee, (attendee) => attendee.event)
+  attendees: Attendee[];
 }
